@@ -1,0 +1,132 @@
+	<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery UI Accordion - Meus versos</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!--link rel="stylesheet" href="/resources/demos/style.css">-->
+	<style>
+	.alternador { color: white; width: 500px; height: 300px; position: relative; background-color: red;}
+	#botao { padding: .5em 1em; text-decoration: none; }
+	#efeitos { width: 240px; height: 170px; padding: 0.4em; position: relative; }
+	#efeitos h3 { margin: 0; padding: 0.4em; text-align: center; }
+	.ui-effects-transfer { border: 2px dotted gray;text-align: center; }
+	#acordeon{color: orange; width: 50%; }
+	.verso1{color: white; background-color: green; width: 100%; }
+	.verso2{color: white; background-color: blue; width: 100%;}
+	.verso3{color: black; background-color: yellow; width: 50%;}
+
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	 <script>
+	  
+	  $( function() {
+	  
+		$( "#acordeon" ).accordion({
+		
+		  collapsible: true
+		  
+		 });
+		  
+		var botao = $("#botao");
+		
+		botao.on( "click", function() {
+		var efeito = $("#tiposDeEfeitos").val();
+		isVisivel = $("#acordeon").is(":visible")
+		  
+		var options = {};
+		if ( efeito === "scale" ) {
+			options = { percent: 50 };
+		} else if ( efeito === "size" ) {
+			options = { to: { width: 200, height: 60 } };
+		}
+		if ( isVisivel) {
+		  
+			
+		  $( "#acordeon" ).hide( efeito, options, 1000);
+		  botao.text("Mostrar");
+		  
+		  }else{
+		  
+		  $( "#acordeon" ).show( efeito, options, 1000);
+		  botao.text("Esconder");
+			}
+									
+		});	
+		});
+	</script>
+	</head> 
+	<body>
+	
+	
+	<h2>Escolha um verso:</h2>
+
+	<div id="acordeon">
+	<h3>Verso 1</h3>
+	<div class="verso1">
+	<p>
+	Batatinha quando nasce,<br>
+	Espalha a rama pelo chão.<br>
+	Fulaninho quando acorda,<br>
+	Bota a mão no coração.
+	</p>
+	</div>
+
+	<h3>Verso 2</h3>
+	<div class="verso2">
+	<p>
+	O rato roeu a roupa do rei de Roma.<br>
+	E ficou com dor de barriga.
+	</p>
+	</div>
+
+	<h3>Verso 3</h3>
+	<div class="verso3">
+	<p>
+	Em casa de ferreiro,<br>
+	Espeto de pau!
+	</p>
+	</div>
+
+	<h3>Opçao 4</h3>
+	<div class="alternador">
+	  <div id="efeitos="ui-widget-content ui-corner-all">
+		<h3 class="ui-widget-header ui-corner-all">Efeito>
+	<p>
+	Cras dictum. Pellentesque habitant morbi tristique 
+	senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante 
+	ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+	Aenean lacinia mauris vel est.<br>
+	Suspendisse eu nisl. Nullam ut libero. Integer dignissim 
+	consequat lectus.<br>
+	Class aptent taciti sociosqu ad litora torquent per 
+	conubia nostra, per inceptos himenaeos.
+	</p>
+	</div>
+	</div>
+	</div>
+	
+	<select id="tiposDeEfeitos">
+
+	<option value="blind">Cortina</option>
+	<option value="bounce">Tremer</option>
+	<option value="clip">Clip</option>
+	<option value="drop">cair</option>
+	<option value="explode">Explodir</option>
+	<option value="fade">Desvanecer</option>
+	<option value="fold">Dobrar</option>
+	<option value="highlight">Piscar</option>
+	<option value="puff">Sopro</option>
+	<option value="pulsate">Pulsar</option>
+	<option value="scale">Scalar</option>
+	<option value="shake">Mexer</option>
+	<option value="size">Reduzir/Almentar</option>
+	<option value="slide">Deslizar</option>
+	<option value="transfer">Transferir</option>
+	</select>
+	
+	<button id="botao" class="ui-state-default ui-corner-all">Efeitos</button>
+	</body>
+	</html>
